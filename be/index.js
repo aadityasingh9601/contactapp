@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 const corsOptions = {
   origin: "https://contactapp-lyart.vercel.app", // Allow all origins (change to specific domain for security)
