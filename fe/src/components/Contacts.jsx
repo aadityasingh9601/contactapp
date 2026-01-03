@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Contact from "./Contact";
 import axios from "axios";
-import { BACKEND_URL } from "../utils/config";
+import { BACKEND_URL } from "../utils/config.js";
 
 export default function Contacts() {
   const [contacts, setContacts] = useState([]);

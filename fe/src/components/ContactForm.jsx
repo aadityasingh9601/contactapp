@@ -2,7 +2,7 @@ import Button from "./Button";
 import Input from "./Input";
 import axios from "axios";
 import { useState } from "react";
-import { BACKEND_URL } from "../utils/config";
+import { BACKEND_URL } from "../utils/config.js";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
