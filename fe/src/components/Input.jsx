@@ -1,4 +1,11 @@
-export default function Input({ name, type, placeholder, value, onChange }) {
+export default function Input({
+  name,
+  type,
+  placeholder,
+  value,
+  onChange,
+  ...props
+}) {
   return (
     <div>
       <label></label>
@@ -8,6 +15,7 @@ export default function Input({ name, type, placeholder, value, onChange }) {
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        {...props}
       />
     </div>
   );

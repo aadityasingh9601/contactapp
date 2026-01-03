@@ -42,14 +42,39 @@ app.get("/contacts", async (req, res) => {
 });
 
 app.post("/newcontact", async (req, res) => {
-  const { formData } = req.body;
+  const { name, email, phone, message } = req.body;
+
+  if (!name || !email || !phone) {
+    return res.status(400).json({
+      error: "All fields are required",
+    });
+  }
+
+  if (!/^\S+@\S+\.\S+$/.test(email)) {
+    return res.status(400).json({
+      error: "Invalid email format",
+    });
+  }
+
+  if (!/^\d{10}$/.test(phone)) {
+    return res.status(400).json({
+      error: "Invalid phone number",
+    });
+  }
+
+  if (message && message.trim().length < 10) {
+    return res.status(400).json({
+      error: "Message too short",
+    });
+  }
+
   console.log(formData);
 
   const newContact = new Contact({
-    name: formData.name,
-    email: formData.email,
-    phone: formData.phone,
-    message: formData.message,
+    name: name,
+    email: email,
+    phone: phone,
+    message: message,
   });
 
   await newContact.save();

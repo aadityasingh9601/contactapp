@@ -38,6 +38,8 @@ export default function ContactForm() {
           placeholder="Enter your name"
           value={formData.name}
           onChange={handleChange}
+          required
+          minLength={2}
         />
         <Input
           name="email"
@@ -45,13 +47,16 @@ export default function ContactForm() {
           placeholder="Enter your email"
           onChange={handleChange}
           value={formData.email}
+          required
         />
         <Input
           name="phone"
-          type="number"
+          type="string"
           placeholder="Enter your phone"
           onChange={handleChange}
           value={formData.phone}
+          required
+          pattern="\d{10}"
         />
         <Input
           name="message"
