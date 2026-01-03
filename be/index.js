@@ -2,12 +2,15 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import Contact from "./models/Contact.js";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 const corsOptions = {
-  origin: "http://localhost:5173", // Allow all origins (change to specific domain for security)
+  origin: "https://contactapp-lyart.vercel.app/", // Allow all origins (change to specific domain for security)
   methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
@@ -24,7 +27,7 @@ main()
   .catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/contactapp");
+  await mongoose.connect(process.env.MONGO_URL);
 }
 
 app.get("/", (req, res) => {
