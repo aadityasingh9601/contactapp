@@ -17,18 +17,25 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-main().catch((err) => console.log(err));
+main()
+  .then(() => {
+    console.log("Connected to MongoDB!");
+  })
+  .catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/test");
+  await mongoose.connect("mongodb://127.0.0.1:27017/contactapp");
 }
 
 app.get("/", (req, res) => {
   res.send("This is your home page.");
 });
 
-app.get("/contacts", (req, res) => {
-  res.send("This is your create contacts route.");
+app.get("/contacts", async (req, res) => {
+  const allContacts = await Contact.find();
+  console.log(allContacts);
+
+  res.send(allContacts);
 });
 
 app.post("/newcontact", async (req, res) => {
