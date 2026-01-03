@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Contact from "./Contact";
 import axios from "axios";
+import { BACKEND_URL } from "../utils/config";
 
 export default function Contacts() {
   const [contacts, setContacts] = useState([]);
@@ -8,7 +9,7 @@ export default function Contacts() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await axios.get("http://localhost:3000/contacts", {
+        const res = await axios.get(`${BACKEND_URL}/contacts`, {
           withCredentials: true,
         });
         console.log(res);

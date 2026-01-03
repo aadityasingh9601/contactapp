@@ -2,6 +2,7 @@ import Button from "./Button";
 import Input from "./Input";
 import axios from "axios";
 import { useState } from "react";
+import { BACKEND_URL } from "../utils/config";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -22,7 +23,7 @@ export default function ContactForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await axios.post(
-      "http://localhost:3000/newcontact",
+      `${BACKEND_URL}/newcontact`,
       { formData },
       { withCredentials: true }
     );
