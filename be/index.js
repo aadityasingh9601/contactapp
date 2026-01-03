@@ -10,7 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const corsOptions = {
-  origin: "https://contactapp-lyart.vercel.app/", // Allow all origins (change to specific domain for security)
+  origin: "https://contactapp-lyart.vercel.app", // Allow all origins (change to specific domain for security)
   methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
